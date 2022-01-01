@@ -20,6 +20,9 @@ async function run() {
         await client.connect();
         console.log('database connection success');
         console.log('database connection success');
+        console.log('database connection success');
+        console.log('database connection success');
+        console.log('database connection success');
 
         // database and collection
 
