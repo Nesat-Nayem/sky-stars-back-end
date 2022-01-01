@@ -19,12 +19,10 @@ async function run() {
     try {
         await client.connect();
         console.log('database connection success');
-        console.log('database connection success');
-        console.log('database connection success');
-        console.log('database connection success');
-        console.log('database connection success');
 
         // database and collection
+        const database = client.db("skyDB");
+        const servicesCollection = database.collection('services');
 
 
     }
