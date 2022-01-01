@@ -24,6 +24,19 @@ async function run() {
         const database = client.db("skyDB");
         const servicesCollection = database.collection('services');
 
+        // insert Services
+        app.post('/addService', async (req, res) => {
+            const service = req.body;
+            const result = await servicesCollection.insertOne(service);
+            res.send(result);
+        })
+
+        // read read service
+        app.get('/service', async (req, res) => {
+            const result = await servicesCollection.find({}).toArray();
+            res.send(result)
+        })
+
 
     }
     finally {
