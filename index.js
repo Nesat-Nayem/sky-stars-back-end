@@ -14,11 +14,12 @@ app.use(express.json());
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.6soco.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+console.log(uri);
 async function run() {
     try {
         await client.connect();
 
-       
+
         // database and collection
         const database = client.db("skyDB");
         const servicesCollection = database.collection("services");
@@ -47,8 +48,9 @@ async function run() {
         })
 
         // read review
-        app.get('/review', async (req, res) => {
+        app.get('/reviews', async (req, res) => {
             const review = await reviewsCollection.find({}).toArray();
+            // console.log(review);
             res.send(review)
         })
 
