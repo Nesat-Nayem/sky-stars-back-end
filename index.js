@@ -111,7 +111,7 @@ async function run() {
         // read manage Service
         app.get('/manageService', async (req, res) => {
             const result = await servicesCollection.find({}).toArray();
-            res.send(result)
+            res.json(result)
         })
 
         //Service delete from  all Service
@@ -134,7 +134,7 @@ async function run() {
             const options = { upsert: true };
             const doc = { $set: user }
             const result = await usersCollections.updateOne(filter, doc, options);
-            res.send(result)
+            res.json(result)
         })
 
         // insert user by register
@@ -142,7 +142,7 @@ async function run() {
             const user = req.body;
             console.log('hit', user);
             const result = await usersCollections.insertOne(user);
-            res.send(result);
+            res.json(result);
         })
 
         // make admin
@@ -165,6 +165,11 @@ async function run() {
                 isAdmin = true;
             }
             res.json({ admin: isAdmin });
+        })
+
+        app.get('/users', async (req, res) => {
+            const result = await usersCollections.find({}).toArray();
+            res.json(result)
         })
 
 
