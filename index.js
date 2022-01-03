@@ -54,6 +54,13 @@ async function run() {
             res.send(review)
         })
 
+        app.get('/services/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { '_id': ObjectId(id) }
+            const result = await servicesCollection.findOne(filter)
+            res.json(result)
+        })
+
         // add order
         app.post('/addOrder', async (req, res) => {
             const order = req.body;
