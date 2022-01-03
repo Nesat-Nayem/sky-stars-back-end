@@ -71,7 +71,7 @@ async function run() {
         // read myOrders
         app.get('/MyOrders/:email', async (req, res) => {
             const email = req.params.email;
-            const result = await ordersCollection.find({ CustomerEmail: email }).toArray();
+            const result = await ordersCollection.find({ email: email }).toArray();
             res.send(result)
         })
 
