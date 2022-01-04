@@ -182,7 +182,7 @@ async function run() {
             const query = { _id: ObjectId(id) }
             const result = await ordersCollection.findOne(query)
             // console.log(result);
-            res.send(result)
+            res.json(result)
         })
 
         app.post('/create-payment-intent', async (req, res) => {
@@ -199,22 +199,6 @@ async function run() {
             res.json({ clientSecret: paymentIntent.client_secret })
 
         })
-
-        // app.put('/payment/:id', async (req, res) => {
-        //     const id = req.params.id;
-        //     const payment = req.body;
-        //     console.log(payment);
-        //     const query = { _id: ObjectId(id) }
-        //     const updateDoc = {
-        //         $set: {
-        //             payment: payment
-        //         }g
-        //     };
-        //     console.log(result)
-        //     const result = await ordersCollection.updateOne(query, updateDoc)
-        //     res.json(result)
-
-        // })
 
 
 
